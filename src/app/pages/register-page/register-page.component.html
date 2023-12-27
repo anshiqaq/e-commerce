@@ -1,0 +1,78 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <div class="wrapper">
+                <h2 class="text-center">Register</h2>
+                <hr>
+                <form #registerform="ngForm" (submit)="onSubmitHandler()"> 
+                    <!-- to display the form value -->
+                    <!-- <h2>{{registerform.value | json}}</h2>  -->
+                    <!-- to get the value to the input field -->
+                    <!-- <h4>{{userModel | json}}</h4> -->
+                    <div class="form-group">
+                        <label for="firstName">FirstName</label>
+                        <input type="text" name="firstName" id="firstName" class="form-control" [(ngModel)]="userModel.firstName"
+                        required #firstName="ngModel"                                           
+                        [class.is-invalid]="firstName.invalid && firstName.touched">
+                        <small class="text-danger" [class.d-none]="firstName.untouched || firstName.valid" >first name is required</small>
+                        <!-- <h3>{{firstName.className}}</h3> -->
+                        <!-- [class.is-valid]="firstName.valid" -->
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="text" name="email" id="email" class="form-control" [(ngModel)]="userModel.email"
+                        required 
+                        pattern="^[a-zA-Z0-9+_.%-]+@[a-zA-Z0-9.-]+\.[a-z]{2,4}$"
+                        #email="ngModel"
+                        [class.is-invalid]="email.invalid && email.touched">
+                        <!-- <small class="text-danger" [class.d-none]="email.untouched || email.valid">Email is required</small> -->
+                      <div *ngIf="email.errors && email.touched"> 
+                          <small class="text-danger" *ngIf="email.errors['pattern']"  >email must be a valid Address</small>
+                        <small class="text-danger" *ngIf="email.errors['required']" >Email is required</small>
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="mobile">Mobile</label>
+                        <input type="text" name="mobile" id="mobile" class="form-control" [(ngModel)]="userModel.mobile"
+                        required                       
+                        #mobile="ngModel"
+                        pattern="^\d{10}"
+                        [class.is-invalid]="mobile.invalid && mobile.dirty && mobile.touched">
+                        <div *ngIf="mobile.errors && mobile.touched">
+                            <small class="text-danger" *ngIf="mobile.errors['required']">Mobile No is required</small>
+                            <small class="text-danger" *ngIf="mobile.errors['pattern']">Enter Valid Mobile No</small>
+                        </div>
+                        <!-- <small class="text-danger" [class.d-none]="mobile.untouched || mobile.valid">Mobile No is required</small> -->
+                    
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" name="password" id="password" class="form-control" [(ngModel)]="userModel.password"
+                        required
+                        minlength="6"
+                        #password="ngModel"
+                        [class.is-invalid]="password.invalid && password.touched">
+                        <!-- <small class="text-danger" [class.d-none]="password.untouched || password.valid">Password is required</small>  -->
+                        <div *ngIf="password.errors && password.touched">
+                            <small class="text-danger" *ngIf="password.errors['required']">Passwordis required</small>
+                            <small class="text-danger" *ngIf="password.errors['minlength']">Enter Valid password</small>
+                        </div>
+
+                    </div>
+
+                    <input type="submit" value="Register" class="btn-btn-primary btn-block"
+                    [disabled]="registerform.invalid">
+                </form>
+                <br>
+                <p class="text-center" > Already Register?
+                    <a routerLink="/login">Click Here</a>
+                </p>
+            </div>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+</div>

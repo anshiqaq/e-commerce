@@ -1,0 +1,38 @@
+<!-- <div class="container">
+    <h1>{{product|json}}</h1>
+    <div class="wrapper">
+        <div class="row">
+          
+            <div class="card-body  col-md-6">
+                <img class="card-img-top " src="{{product?.productImage}}" alt="">
+                <h5 class="card-title">{{product?.productTitle}}</h5>
+                <span class="badge badge-secondary">{{product?.category?.categoryName}}</span>
+                <p>{{product?.description}}</p>
+                <h2>{{product?.price | currency : 'INR'}}</h2>
+                <br>
+                <button class="btn btn-primary ">Add to Cart</button>                
+            </div>
+        </div>
+    </div>  
+</div> -->
+
+<div class="container">
+    <h2 class="text-center shadow 20px text-bg-info mt-3 ">Product Details</h2>
+
+    <div class="row">
+        <div class="warpper">
+            <div class="card shadow 20px">
+
+                <img src="{{product?.productImage}}" alt="" width="600px">
+                <div class="card-body">
+                    <h5 class="card-title">{{product?.productTitle}}</h5>
+                    <p>{{product?.description}}</p>
+                    <span class="badge badge-secondary">{{product?.category?.categoryName}}</span>
+                    <h2>{{product?.price| currency : 'INR'}}</h2>
+                    <button class="btn btn-light btn-outline-primary btn-block" >Add Cart</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

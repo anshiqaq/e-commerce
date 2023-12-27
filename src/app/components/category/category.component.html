@@ -1,0 +1,19 @@
+<div class="container">
+    <h2 class="text-center shadow 10px text-bg-info">All Categories</h2>
+
+
+    <div class="row text-center">
+        <div class="col-sm-4 p-2" *ngFor="let cat of categories">
+          <div class="card">
+           <img src="{{cat.categoryImage}}" alt="">
+            <div class="card-body">
+              <h5 class="card-title">{{cat.categoryName}}</h5>
+              
+              <a (click)="onButtonClicked(cat)" class="btn btn-light  btn-outline-info btn-block">Select</a>
+            </div>
+          </div>
+        </div>
+       
+      </div>
+
+</div>
